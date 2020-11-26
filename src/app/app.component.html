@@ -1,5 +1,27 @@
-<!--<h1>confirmed cases : {{obj.confirmed.value}}</h1>
-<h1>recovered cases : {{obj.recovered.value}}</h1>
-<h1>death cases : {{obj.deaths.value}}</h1>
-<h4>lastupdated : {{obj.lastUpdate}}</h4>-->
-<app-show></app-show>
+<h1>Covid-19 Data Of India </h1>
+<div class="kl">
+    <label class="dec">State:</label><br>
+    <select name="states" id="states" #bp (change)="solve(bp.value)">
+        <option *ngFor="let it of arr" >{{it}}</option>
+      </select>
+<br>
+<label class="dec">District:</label><br>
+<select name="cars" id="cars" #bp1>
+        <option *ngFor="let re of Distr" >{{re}}</option>
+      </select>
+<br><br>
+
+<button (click)="solve1(bp.value,bp1.value)">Check</button>
+</div>
+<div *ngIf="result[State]" class="row">
+    
+    <div *ngIf="result[State].districtData[dis]" class="col">
+    <app-show [val]="result[State].districtData[dis].confirmed" x="Confirmed"></app-show>
+    </div>
+    <div *ngIf="result[State].districtData[dis]" class="col">
+    <app-show [val]="result[State].districtData[dis].active" x="Active"></app-show></div>
+    <div *ngIf="result[State].districtData[dis]" class="col">
+    <app-show [val]="result[State].districtData[dis].deceased" x="Death"></app-show>
+    </div>
+</div>
+
